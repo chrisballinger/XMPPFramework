@@ -1,7 +1,7 @@
 #import "ChatViewController.h"
 #import "ServerlessDemoAppDelegate.h"
 #import "Service.h"
-#import "Message.h"
+#import "XMPPMessage.h"
 #import "DDXML.h"
 #import "XMPPStream.h"
 #import "XMPPJID.h"
@@ -11,6 +11,7 @@
 #import "NSXMLElement+XMPP.h"
 #import "NSString+DDXML.h"
 #import "DDLog.h"
+#import "P2PMessage.h"
 
 #import <arpa/inet.h>
 
@@ -222,7 +223,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	
 	[xmppStream sendElement:message];
 	
-	Message *msg = [NSEntityDescription insertNewObjectForEntityForName:@"Message"
+	P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 												 inManagedObjectContext:[self managedObjectContext]];
 	
 	msg.content     = msgContent;
@@ -358,7 +359,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (CGSize)sizeForMessageIndexPath:(NSIndexPath *)indexPath
 {
-	Message *message = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+	P2PMessage *message = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	NSString *content = message.content;
 	
 	UIFont *font = [self messageFont];
@@ -392,8 +393,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:(indexPath.row - 1)
 	                                                    inSection:indexPath.section];
 	
-	Message *currentMessage  = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-	Message *previousMessage = [[self fetchedResultsController] objectAtIndexPath:previousIndexPath];
+	P2PMessage *currentMessage  = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+	P2PMessage *previousMessage = [[self fetchedResultsController] objectAtIndexPath:previousIndexPath];
 	
     NSDate *currentMessageDate = currentMessage.timeStamp;
 	NSDate *previousMessageDate = previousMessage.timeStamp;
@@ -418,7 +419,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	
 	// Get message and cell views
 	
-	Message *message = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+	P2PMessage *message = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	
 	UILabel     *timeStampLabel  =     (UILabel *)[cell viewWithTag:kTimestampLabelTag];
 	UILabel     *contentLabel    =     (UILabel *)[cell viewWithTag:kContentLabelTag];
@@ -523,7 +524,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 		NSArray *sortDescriptors;
 		NSFetchRequest *fetchRequest;
 		
-		NSEntityDescription *entity = [NSEntityDescription entityForName:@"Message"
+		NSEntityDescription *entity = [NSEntityDescription entityForName:@"P2PMessage"
 		                                          inManagedObjectContext:managedObjectContext];
 		
 		dateSD = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES];
@@ -688,7 +689,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	NSString *msgBody = [[[message elementForName:@"body"] stringValue] stringByTrimming];
 	if ([msgBody length] > 0)
 	{
-		Message *msg = [NSEntityDescription insertNewObjectForEntityForName:@"Message"
+		P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 													 inManagedObjectContext:[self managedObjectContext]];
 		
 		msg.content     = msgBody;

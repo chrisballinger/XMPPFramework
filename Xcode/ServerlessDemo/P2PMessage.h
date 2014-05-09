@@ -3,7 +3,7 @@
 @class Service;
 
 
-@interface Message : NSManagedObject
+@interface P2PMessage : NSManagedObject
 
 // Properties
 

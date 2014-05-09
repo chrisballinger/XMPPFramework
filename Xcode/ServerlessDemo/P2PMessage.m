@@ -1,7 +1,7 @@
-#import "Message.h"
+#import "P2PMessage.h"
 #import "Service.h"
 
-@implementation Message
+@implementation P2PMessage
 
 @dynamic content;
 @dynamic outbound;

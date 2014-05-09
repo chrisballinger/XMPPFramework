@@ -23,6 +23,12 @@
 		D978F43218AB6DAC0099D05F /* XMPPMessage+XEP_0066.m in Sources */ = {isa = PBXBuildFile; fileRef = D978F43018AB6DAC0099D05F /* XMPPMessage+XEP_0066.m */; };
 		D9979FD2191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */; };
 		D9979FD5191AF33300018F3E /* XMPPIDTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = D9979FD4191AF33300018F3E /* XMPPIDTracker.m */; };
+		D9D4F185191C620200F23FA4 /* libgcrypt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F182191C620200F23FA4 /* libgcrypt.a */; };
+		D9D4F186191C620200F23FA4 /* libgpg-error.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F183191C620200F23FA4 /* libgpg-error.a */; };
+		D9D4F187191C620200F23FA4 /* libotr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F184191C620200F23FA4 /* libotr.a */; };
+		D9D4F18D191C62D700F23FA4 /* OTRKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4F18A191C62D700F23FA4 /* OTRKit.m */; };
+		D9D4F18E191C62D700F23FA4 /* OTRTLV.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4F18C191C62D700F23FA4 /* OTRTLV.m */; };
+		D9D4F193191C7B5200F23FA4 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F192191C7B5200F23FA4 /* libidn.a */; };
 		DC26A534152A3EBF004B71C0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC26A533152A3EBF004B71C0 /* Security.framework */; };
 		DC30E6EA153E09FA001B9E6D /* XMPPAnonymousAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DC30E6D9153E09FA001B9E6D /* XMPPAnonymousAuthentication.m */; };
 		DC30E6EB153E09FA001B9E6D /* XMPPDeprecatedDigestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = DC30E6DC153E09FA001B9E6D /* XMPPDeprecatedDigestAuthentication.m */; };
@@ -46,7 +52,6 @@
 		DC84BCAF12440DD80055A459 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = DC84BCA412440DD80055A459 /* XMPPPresence.m */; };
 		DC84BCB112440DD80055A459 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DC84BCA812440DD80055A459 /* XMPPStream.m */; };
 		DC84BCCD12440ECC0055A459 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC84BCCC12440ECC0055A459 /* SystemConfiguration.framework */; };
-		DC84BCD312440EE60055A459 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC84BCD212440EE60055A459 /* libidn.a */; };
 		DC84BCD712440EFC0055A459 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC84BCD612440EFC0055A459 /* libresolv.dylib */; };
 		DCB81EA7130AC8FB002ACF2E /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB81EA6130AC8FB002ACF2E /* GCDAsyncSocket.m */; };
 		DCB81EB0130AC915002ACF2E /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DCB81EA9130AC915002ACF2E /* DDASLLogger.m */; };
@@ -60,7 +65,7 @@
 		DCE60CEB10F7C3E000E20271 /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE60CEA10F7C3E000E20271 /* BonjourClient.m */; };
 		DCE60D8D10F8EF6E00E20271 /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE60D8C10F8EF6E00E20271 /* DDString.m */; };
 		DCE60DFA10F93B9C00E20271 /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE60DF910F93B9C00E20271 /* UnreadIndicator.png */; };
-		DCE60DFD10F93C5400E20271 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE60DFC10F93C5400E20271 /* Message.m */; };
+		DCE60DFD10F93C5400E20271 /* P2PMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE60DFC10F93C5400E20271 /* P2PMessage.m */; };
 		DCE60E1E10F941D500E20271 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE60E1D10F941D500E20271 /* CFNetwork.framework */; };
 		DCE60EA810FA88EB00E20271 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCE60EA610FA88EB00E20271 /* ChatViewController.m */; };
 		DCE60EA910FA88EB00E20271 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCE60EA710FA88EB00E20271 /* ChatViewController.xib */; };
@@ -96,6 +101,62 @@
 		D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPSCRAMSHA1Authentication.m; sourceTree = "<group>"; };
 		D9979FD3191AF33300018F3E /* XMPPIDTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPIDTracker.h; path = ../../Utilities/XMPPIDTracker.h; sourceTree = "<group>"; };
 		D9979FD4191AF33300018F3E /* XMPPIDTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPIDTracker.m; path = ../../Utilities/XMPPIDTracker.m; sourceTree = "<group>"; };
+		D9D4F14D191C61B500F23FA4 /* auth.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = auth.c; sourceTree = "<group>"; };
+		D9D4F14E191C61B500F23FA4 /* auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = auth.h; sourceTree = "<group>"; };
+		D9D4F14F191C61B500F23FA4 /* b64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = b64.c; sourceTree = "<group>"; };
+		D9D4F150191C61B500F23FA4 /* b64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = b64.h; sourceTree = "<group>"; };
+		D9D4F151191C61B500F23FA4 /* context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = context.c; sourceTree = "<group>"; };
+		D9D4F152191C61B500F23FA4 /* context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = context.h; sourceTree = "<group>"; };
+		D9D4F153191C61B500F23FA4 /* context_priv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = context_priv.c; sourceTree = "<group>"; };
+		D9D4F154191C61B500F23FA4 /* context_priv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = context_priv.h; sourceTree = "<group>"; };
+		D9D4F155191C61B500F23FA4 /* dh.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = dh.c; sourceTree = "<group>"; };
+		D9D4F156191C61B500F23FA4 /* dh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
+		D9D4F157191C61B500F23FA4 /* instag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instag.c; sourceTree = "<group>"; };
+		D9D4F158191C61B500F23FA4 /* instag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instag.h; sourceTree = "<group>"; };
+		D9D4F15B191C61B500F23FA4 /* mem.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mem.c; sourceTree = "<group>"; };
+		D9D4F15C191C61B500F23FA4 /* mem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mem.h; sourceTree = "<group>"; };
+		D9D4F15D191C61B500F23FA4 /* message.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = message.c; sourceTree = "<group>"; };
+		D9D4F15E191C61B500F23FA4 /* message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		D9D4F15F191C61B500F23FA4 /* privkey-t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "privkey-t.h"; sourceTree = "<group>"; };
+		D9D4F160191C61B500F23FA4 /* privkey.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = privkey.c; sourceTree = "<group>"; };
+		D9D4F161191C61B500F23FA4 /* privkey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = privkey.h; sourceTree = "<group>"; };
+		D9D4F162191C61B500F23FA4 /* proto.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = proto.c; sourceTree = "<group>"; };
+		D9D4F163191C61B500F23FA4 /* proto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = proto.h; sourceTree = "<group>"; };
+		D9D4F164191C61B500F23FA4 /* serial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
+		D9D4F165191C61B500F23FA4 /* sm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sm.c; sourceTree = "<group>"; };
+		D9D4F166191C61B500F23FA4 /* sm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sm.h; sourceTree = "<group>"; };
+		D9D4F167191C61B500F23FA4 /* tlv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = tlv.c; sourceTree = "<group>"; };
+		D9D4F168191C61B500F23FA4 /* tlv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tlv.h; sourceTree = "<group>"; };
+		D9D4F169191C61B500F23FA4 /* userstate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = userstate.c; sourceTree = "<group>"; };
+		D9D4F16A191C61B500F23FA4 /* userstate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = userstate.h; sourceTree = "<group>"; };
+		D9D4F16B191C61B500F23FA4 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		D9D4F16D191C620200F23FA4 /* gcrypt-module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gcrypt-module.h"; sourceTree = "<group>"; };
+		D9D4F16E191C620200F23FA4 /* gcrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcrypt.h; sourceTree = "<group>"; };
+		D9D4F16F191C620200F23FA4 /* gpg-error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpg-error.h"; sourceTree = "<group>"; };
+		D9D4F171191C620200F23FA4 /* auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = auth.h; sourceTree = "<group>"; };
+		D9D4F172191C620200F23FA4 /* b64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b64.h; sourceTree = "<group>"; };
+		D9D4F173191C620200F23FA4 /* context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = context.h; sourceTree = "<group>"; };
+		D9D4F174191C620200F23FA4 /* context_priv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = context_priv.h; sourceTree = "<group>"; };
+		D9D4F175191C620200F23FA4 /* dh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dh.h; sourceTree = "<group>"; };
+		D9D4F176191C620200F23FA4 /* instag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = instag.h; sourceTree = "<group>"; };
+		D9D4F177191C620200F23FA4 /* mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mem.h; sourceTree = "<group>"; };
+		D9D4F178191C620200F23FA4 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		D9D4F179191C620200F23FA4 /* privkey-t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "privkey-t.h"; sourceTree = "<group>"; };
+		D9D4F17A191C620200F23FA4 /* privkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = privkey.h; sourceTree = "<group>"; };
+		D9D4F17B191C620200F23FA4 /* proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proto.h; sourceTree = "<group>"; };
+		D9D4F17C191C620200F23FA4 /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
+		D9D4F17D191C620200F23FA4 /* sm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm.h; sourceTree = "<group>"; };
+		D9D4F17E191C620200F23FA4 /* tlv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tlv.h; sourceTree = "<group>"; };
+		D9D4F17F191C620200F23FA4 /* userstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userstate.h; sourceTree = "<group>"; };
+		D9D4F180191C620200F23FA4 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		D9D4F182191C620200F23FA4 /* libgcrypt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libgcrypt.a; sourceTree = "<group>"; };
+		D9D4F183191C620200F23FA4 /* libgpg-error.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libgpg-error.a"; sourceTree = "<group>"; };
+		D9D4F184191C620200F23FA4 /* libotr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libotr.a; sourceTree = "<group>"; };
+		D9D4F189191C62D700F23FA4 /* OTRKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTRKit.h; path = Submodules/OTRKit/OTRKit/OTRKit.h; sourceTree = "<group>"; };
+		D9D4F18A191C62D700F23FA4 /* OTRKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTRKit.m; path = Submodules/OTRKit/OTRKit/OTRKit.m; sourceTree = "<group>"; };
+		D9D4F18B191C62D700F23FA4 /* OTRTLV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTRTLV.h; path = Submodules/OTRKit/OTRKit/OTRTLV.h; sourceTree = "<group>"; };
+		D9D4F18C191C62D700F23FA4 /* OTRTLV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTRTLV.m; path = Submodules/OTRKit/OTRKit/OTRTLV.m; sourceTree = "<group>"; };
+		D9D4F192191C7B5200F23FA4 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = ../../Vendor/libidn/libidn.a; sourceTree = "<group>"; };
 		DC26A533152A3EBF004B71C0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DC30E6D8153E09FA001B9E6D /* XMPPAnonymousAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPAnonymousAuthentication.h; sourceTree = "<group>"; };
 		DC30E6D9153E09FA001B9E6D /* XMPPAnonymousAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPAnonymousAuthentication.m; sourceTree = "<group>"; };
@@ -145,7 +206,6 @@
 		DC84BCA712440DD80055A459 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPStream.h; path = ../../Core/XMPPStream.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DC84BCA812440DD80055A459 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPStream.m; path = ../../Core/XMPPStream.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DC84BCCC12440ECC0055A459 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DC84BCD212440EE60055A459 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = ../../Vendor/libidn/libidn.a; sourceTree = SOURCE_ROOT; };
 		DC84BCD612440EFC0055A459 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		DCB81EA4130AC8E0002ACF2E /* XMPPLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPLogging.h; path = ../../Core/XMPPLogging.h; sourceTree = SOURCE_ROOT; };
 		DCB81EA5130AC8FB002ACF2E /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = ../../Vendor/CocoaAsyncSocket/GCDAsyncSocket.h; sourceTree = SOURCE_ROOT; };
@@ -172,8 +232,8 @@
 		DCE60D8B10F8EF6E00E20271 /* DDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDString.h; sourceTree = "<group>"; };
 		DCE60D8C10F8EF6E00E20271 /* DDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDString.m; sourceTree = "<group>"; };
 		DCE60DF910F93B9C00E20271 /* UnreadIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UnreadIndicator.png; path = Images/UnreadIndicator.png; sourceTree = "<group>"; };
-		DCE60DFB10F93C5400E20271 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		DCE60DFC10F93C5400E20271 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		DCE60DFB10F93C5400E20271 /* P2PMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P2PMessage.h; sourceTree = "<group>"; };
+		DCE60DFC10F93C5400E20271 /* P2PMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P2PMessage.m; sourceTree = "<group>"; };
 		DCE60E1D10F941D500E20271 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DCE60EA510FA88EB00E20271 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		DCE60EA610FA88EB00E20271 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
@@ -193,11 +253,14 @@
 				DC26A534152A3EBF004B71C0 /* Security.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				D9D4F187191C620200F23FA4 /* libotr.a in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				28860BE50F44EE6400985440 /* CoreData.framework in Frameworks */,
 				DCE60E1E10F941D500E20271 /* CFNetwork.framework in Frameworks */,
 				DC84BCCD12440ECC0055A459 /* SystemConfiguration.framework in Frameworks */,
-				DC84BCD312440EE60055A459 /* libidn.a in Frameworks */,
+				D9D4F186191C620200F23FA4 /* libgpg-error.a in Frameworks */,
+				D9D4F193191C7B5200F23FA4 /* libidn.a in Frameworks */,
+				D9D4F185191C620200F23FA4 /* libgcrypt.a in Frameworks */,
 				DC84BCD712440EFC0055A459 /* libresolv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				962032011735837200C43080 /* Default-568h@2x.png */,
+				D9D4F14B191C618D00F23FA4 /* OTRKit */,
 				DCE60CA710F7A6ED00E20271 /* Core Data */,
 				DCE60D7210F8EEC300E20271 /* Categories */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -267,6 +331,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D9D4F192191C7B5200F23FA4 /* libidn.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
@@ -274,7 +339,6 @@
 				DCE60E1D10F941D500E20271 /* CFNetwork.framework */,
 				DC84BCCC12440ECC0055A459 /* SystemConfiguration.framework */,
 				DC26A533152A3EBF004B71C0 /* Security.framework */,
-				DC84BCD212440EE60055A459 /* libidn.a */,
 				DC84BCD612440EFC0055A459 /* libresolv.dylib */,
 			);
 			name = Frameworks;
@@ -307,6 +371,111 @@
 				D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */,
 			);
 			path = "SCRAM-SHA-1";
+			sourceTree = "<group>";
+		};
+		D9D4F14B191C618D00F23FA4 /* OTRKit */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F188191C62A000F23FA4 /* Classes */,
+				D9D4F16C191C620200F23FA4 /* include */,
+				D9D4F181191C620200F23FA4 /* lib */,
+				D9D4F14C191C61B500F23FA4 /* libotr */,
+			);
+			name = OTRKit;
+			sourceTree = "<group>";
+		};
+		D9D4F14C191C61B500F23FA4 /* libotr */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F14D191C61B500F23FA4 /* auth.c */,
+				D9D4F14E191C61B500F23FA4 /* auth.h */,
+				D9D4F14F191C61B500F23FA4 /* b64.c */,
+				D9D4F150191C61B500F23FA4 /* b64.h */,
+				D9D4F151191C61B500F23FA4 /* context.c */,
+				D9D4F152191C61B500F23FA4 /* context.h */,
+				D9D4F153191C61B500F23FA4 /* context_priv.c */,
+				D9D4F154191C61B500F23FA4 /* context_priv.h */,
+				D9D4F155191C61B500F23FA4 /* dh.c */,
+				D9D4F156191C61B500F23FA4 /* dh.h */,
+				D9D4F157191C61B500F23FA4 /* instag.c */,
+				D9D4F158191C61B500F23FA4 /* instag.h */,
+				D9D4F15B191C61B500F23FA4 /* mem.c */,
+				D9D4F15C191C61B500F23FA4 /* mem.h */,
+				D9D4F15D191C61B500F23FA4 /* message.c */,
+				D9D4F15E191C61B500F23FA4 /* message.h */,
+				D9D4F15F191C61B500F23FA4 /* privkey-t.h */,
+				D9D4F160191C61B500F23FA4 /* privkey.c */,
+				D9D4F161191C61B500F23FA4 /* privkey.h */,
+				D9D4F162191C61B500F23FA4 /* proto.c */,
+				D9D4F163191C61B500F23FA4 /* proto.h */,
+				D9D4F164191C61B500F23FA4 /* serial.h */,
+				D9D4F165191C61B500F23FA4 /* sm.c */,
+				D9D4F166191C61B500F23FA4 /* sm.h */,
+				D9D4F167191C61B500F23FA4 /* tlv.c */,
+				D9D4F168191C61B500F23FA4 /* tlv.h */,
+				D9D4F169191C61B500F23FA4 /* userstate.c */,
+				D9D4F16A191C61B500F23FA4 /* userstate.h */,
+				D9D4F16B191C61B500F23FA4 /* version.h */,
+			);
+			name = libotr;
+			path = "Submodules/OTRKit/build/src/libotr-4.0.0/src";
+			sourceTree = "<group>";
+		};
+		D9D4F16C191C620200F23FA4 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F16D191C620200F23FA4 /* gcrypt-module.h */,
+				D9D4F16E191C620200F23FA4 /* gcrypt.h */,
+				D9D4F16F191C620200F23FA4 /* gpg-error.h */,
+				D9D4F170191C620200F23FA4 /* libotr */,
+			);
+			name = include;
+			path = Submodules/OTRKit/dependencies/include;
+			sourceTree = "<group>";
+		};
+		D9D4F170191C620200F23FA4 /* libotr */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F171191C620200F23FA4 /* auth.h */,
+				D9D4F172191C620200F23FA4 /* b64.h */,
+				D9D4F173191C620200F23FA4 /* context.h */,
+				D9D4F174191C620200F23FA4 /* context_priv.h */,
+				D9D4F175191C620200F23FA4 /* dh.h */,
+				D9D4F176191C620200F23FA4 /* instag.h */,
+				D9D4F177191C620200F23FA4 /* mem.h */,
+				D9D4F178191C620200F23FA4 /* message.h */,
+				D9D4F179191C620200F23FA4 /* privkey-t.h */,
+				D9D4F17A191C620200F23FA4 /* privkey.h */,
+				D9D4F17B191C620200F23FA4 /* proto.h */,
+				D9D4F17C191C620200F23FA4 /* serial.h */,
+				D9D4F17D191C620200F23FA4 /* sm.h */,
+				D9D4F17E191C620200F23FA4 /* tlv.h */,
+				D9D4F17F191C620200F23FA4 /* userstate.h */,
+				D9D4F180191C620200F23FA4 /* version.h */,
+			);
+			path = libotr;
+			sourceTree = "<group>";
+		};
+		D9D4F181191C620200F23FA4 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F182191C620200F23FA4 /* libgcrypt.a */,
+				D9D4F183191C620200F23FA4 /* libgpg-error.a */,
+				D9D4F184191C620200F23FA4 /* libotr.a */,
+			);
+			name = lib;
+			path = Submodules/OTRKit/dependencies/lib;
+			sourceTree = "<group>";
+		};
+		D9D4F188191C62A000F23FA4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D9D4F189191C62D700F23FA4 /* OTRKit.h */,
+				D9D4F18A191C62D700F23FA4 /* OTRKit.m */,
+				D9D4F18B191C62D700F23FA4 /* OTRTLV.h */,
+				D9D4F18C191C62D700F23FA4 /* OTRTLV.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		DC30E6D6153E09FA001B9E6D /* Authentication */ = {
@@ -446,8 +615,8 @@
 				28860B760F44E54D00985440 /* ServerlessDemo.xcdatamodel */,
 				DCE60CCA10F7B49200E20271 /* Service.h */,
 				DCE60CCB10F7B49200E20271 /* Service.m */,
-				DCE60DFB10F93C5400E20271 /* Message.h */,
-				DCE60DFC10F93C5400E20271 /* Message.m */,
+				DCE60DFB10F93C5400E20271 /* P2PMessage.h */,
+				DCE60DFC10F93C5400E20271 /* P2PMessage.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -645,7 +814,8 @@
 				DCE60CCC10F7B49200E20271 /* Service.m in Sources */,
 				DCE60CEB10F7C3E000E20271 /* BonjourClient.m in Sources */,
 				DCE60D8D10F8EF6E00E20271 /* DDString.m in Sources */,
-				DCE60DFD10F93C5400E20271 /* Message.m in Sources */,
+				D9D4F18E191C62D700F23FA4 /* OTRTLV.m in Sources */,
+				DCE60DFD10F93C5400E20271 /* P2PMessage.m in Sources */,
 				D978F43118AB6DAC0099D05F /* XMPPIQ+XEP_0066.m in Sources */,
 				DCE60EA810FA88EB00E20271 /* ChatViewController.m in Sources */,
 				DCBD58CC10FCBE0700ACF4AC /* StreamController.m in Sources */,
@@ -676,6 +846,7 @@
 				DC3731A2139F091B00A8407D /* NSNumber+XMPP.m in Sources */,
 				DC3731A3139F091B00A8407D /* NSXMLElement+XMPP.m in Sources */,
 				DC30E6EA153E09FA001B9E6D /* XMPPAnonymousAuthentication.m in Sources */,
+				D9D4F18D191C62D700F23FA4 /* OTRKit.m in Sources */,
 				DC30E6EB153E09FA001B9E6D /* XMPPDeprecatedDigestAuthentication.m in Sources */,
 				DC30E6EC153E09FA001B9E6D /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				DC30E6ED153E09FA001B9E6D /* XMPPDigestMD5Authentication.m in Sources */,
@@ -698,9 +869,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ServerlessDemo_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(SRCROOT)/Submodules/OTRKit/dependencies/include\"",
+				);
 				INFOPLIST_FILE = "ServerlessDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Submodules/OTRKit/dependencies/lib",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
 				);
 				PRODUCT_NAME = ServerlessDemo;
@@ -716,9 +892,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ServerlessDemo_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					"\"$(SRCROOT)/Submodules/OTRKit/dependencies/include\"",
+				);
 				INFOPLIST_FILE = "ServerlessDemo-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Submodules/OTRKit/dependencies/lib",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
 				);
 				PRODUCT_NAME = ServerlessDemo;

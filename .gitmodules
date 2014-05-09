@@ -2,3 +2,6 @@
 	path = Vendor/facebook-ios-sdk
 	url = git://github.com/facebook/facebook-ios-sdk.git
 	ignore = dirty
+[submodule "Xcode/ServerlessDemo/Submodules/OTRKit"]
+	path = Xcode/ServerlessDemo/Submodules/OTRKit
+	url = git@github.com:ChatSecure/OTRKit.git

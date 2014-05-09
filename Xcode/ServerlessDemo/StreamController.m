@@ -2,7 +2,7 @@
 #import "ServerlessDemoAppDelegate.h"
 #import "GCDAsyncSocket.h"
 #import "Service.h"
-#import "Message.h"
+#import "P2PMessage.h"
 #import "XMPP.h"
 #import "NSXMLElement+XMPP.h"
 #import "NSString+DDXML.h"
@@ -210,7 +210,7 @@ static StreamController *sharedInstance;
 		NSString *msgBody = [[[message elementForName:@"body"] stringValue] stringByTrimming];
 		if ([msgBody length] > 0)
 		{
-			Message *msg = [NSEntityDescription insertNewObjectForEntityForName:@"Message"
+			P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 			                                             inManagedObjectContext:[self managedObjectContext]];
 			
 			msg.content     = msgBody;

@@ -123,7 +123,7 @@
 
 - (NSUInteger)numberOfUnreadMessages
 {
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Message"
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"P2PMessage"
 	                                          inManagedObjectContext:self.managedObjectContext];
 	
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"service == %@ AND read == NO", self];
