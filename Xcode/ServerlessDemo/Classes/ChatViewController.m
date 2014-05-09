@@ -12,6 +12,7 @@
 #import "NSString+DDXML.h"
 #import "DDLog.h"
 #import "P2PMessage.h"
+#import "OTRKit.h"
 
 #import <arpa/inet.h>
 
@@ -214,15 +215,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)sendMessage:(NSString *)msgContent
 {
-	NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-	[body setStringValue:msgContent];
-	
-	NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
-    [message addAttributeWithName:@"type" stringValue:@"chat"];
-	[message addChild:body];
-	
-	[xmppStream sendElement:message];
-	
+    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil recipient:service.displayName accountName:service.serviceName protocol:@"xmpp" completionBlock:^(BOOL success, NSError *error) {
+        if (error) {
+            DDLogError(@"Error encoding message: %@", error);
+        }
+    }];
+    
 	P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 												 inManagedObjectContext:[self managedObjectContext]];
 	
@@ -687,19 +685,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 	
 	NSString *msgBody = [[[message elementForName:@"body"] stringValue] stringByTrimming];
+    
 	if ([msgBody length] > 0)
 	{
-		P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
-													 inManagedObjectContext:[self managedObjectContext]];
-		
-		msg.content     = msgBody;
-		msg.isOutbound  = NO;
-		msg.hasBeenRead = NO;
-		msg.timeStamp   = [NSDate date];
-		
-		msg.service     = service;
-		
-		[[self managedObjectContext] save:nil];
+        [[OTRKit sharedInstance] decodeMessage:msgBody sender:service.displayName accountName:service.serviceName protocol:@"xmpp"];
 	}
 }
 

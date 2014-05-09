@@ -1,13 +1,14 @@
 #import <Foundation/Foundation.h>
+#import "OTRKit.h"
 
 @class GCDAsyncSocket;
 @class Service;
 
-@interface StreamController : NSObject
+@interface StreamController : NSObject <OTRKitDelegate>
 {
 	GCDAsyncSocket *listeningSocket;
-	NSMutableArray *xmppStreams;
 	NSMutableDictionary *serviceDict;
+    NSMutableDictionary *streamsDict;
 }
 
 + (StreamController *)sharedInstance;
