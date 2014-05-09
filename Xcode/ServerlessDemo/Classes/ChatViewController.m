@@ -684,7 +684,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 	
-	NSString *msgBody = [[[message elementForName:@"body"] stringValue] stringByTrimming];
+	NSString *msgBody = [[message elementForName:@"body"] stringValue];
     
 	if ([msgBody length] > 0)
 	{

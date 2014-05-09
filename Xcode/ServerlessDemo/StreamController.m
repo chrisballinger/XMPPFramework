@@ -215,7 +215,7 @@ static StreamController *sharedInstance;
 	Service *service = [self serviceWithXMPPStream:sender];
 	if (service)
 	{
-		NSString *msgBody = [[[message elementForName:@"body"] stringValue] stringByTrimming];
+		NSString *msgBody = [[message elementForName:@"body"] stringValue];
         
         
 		if ([msgBody length] > 0)
