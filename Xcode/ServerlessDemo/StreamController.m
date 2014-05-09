@@ -321,4 +321,16 @@ static StreamController *sharedInstance;
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
+- (void) otrKit:(OTRKit *)otrKit handleSMPEvent:(OTRKitSMPEvent)event progress:(double)progress question:(NSString *)question {
+    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+}
+
+- (void) otrKit:(OTRKit *)otrKit handleMessageEvent:(OTRKitMessageEvent)event message:(NSString *)message error:(NSError *)error {
+    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+}
+
+- (void) otrKit:(OTRKit *)otrKit receivedSymmetricKey:(NSData *)symmetricKey forUse:(NSUInteger)use useData:(NSData *)useData {
+    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+}
+
 @end
