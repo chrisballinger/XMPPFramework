@@ -215,11 +215,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (void)sendMessage:(NSString *)msgContent
 {
-    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil recipient:service.displayName accountName:service.serviceName protocol:@"xmpp" completionBlock:^(BOOL success, NSError *error) {
-        if (error) {
-            DDLogError(@"Error encoding message: %@", error);
-        }
-    }];
+    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil recipient:service.displayName accountName:service.serviceName protocol:@"xmpp"];
     
 	P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 												 inManagedObjectContext:[self managedObjectContext]];
