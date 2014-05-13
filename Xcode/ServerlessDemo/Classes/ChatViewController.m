@@ -60,7 +60,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #define kTimestampLabelTag   3
 
 
-@interface ChatViewController (PrivateAPI)
+@interface ChatViewController ()
 
 - (void)scrollToBottomAnimated:(BOOL)animated;
 
@@ -72,7 +72,10 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 - (NSFetchedResultsController *)fetchedResultsController;
 
+
 @end
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
@@ -102,6 +105,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	                                             name:[service serviceName]];
 	[netService setDelegate:self];
 	[netService resolveWithTimeout:5.0];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"OTR" style:UIBarButtonItemStyleBordered target:self action:@selector(cryptoButtonPressed:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -213,9 +218,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #pragma mark Actions
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void) cryptoButtonPressed:(id)sender {
+    [[OTRKit sharedInstance] initiateSMPForUsername:service.displayName accountName:service.serviceName protocol:@"xmpp" question:@"What's the answer?" secret:@"secret!"];
+}
+
 - (void)sendMessage:(NSString *)msgContent
 {
-    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil recipient:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
     
 	P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 												 inManagedObjectContext:[self managedObjectContext]];
@@ -684,7 +693,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
 	if ([msgBody length] > 0)
 	{
-        [[OTRKit sharedInstance] decodeMessage:msgBody sender:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+        [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
 	}
 }
 

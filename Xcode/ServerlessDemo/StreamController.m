@@ -220,7 +220,7 @@ static StreamController *sharedInstance;
         
 		if ([msgBody length] > 0)
 		{
-            [[OTRKit sharedInstance] decodeMessage:msgBody sender:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+            [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
 		}
 	}
 }
@@ -248,9 +248,9 @@ static StreamController *sharedInstance;
 
 #pragma mark OTRKitDelegete methods
 
-- (void) otrKit:(OTRKit *)otrKit injectMessage:(NSString *)message recipient:(NSString *)recipient accountName:(NSString *)accountName protocol:(NSString *)protocol {
+- (void) otrKit:(OTRKit *)otrKit injectMessage:(NSString *)message username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
     dispatch_async(dispatch_get_main_queue(), ^{
-        DDLogVerbose(@"injectMessage: %@ recipient: %@ accountName: %@ protocol %@", message, recipient, accountName, protocol);
+        DDLogVerbose(@"injectMessage: %@ recipient: %@ accountName: %@ protocol %@", message, username, accountName, protocol);
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"serviceName == %@", accountName];
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Service"];
@@ -272,9 +272,9 @@ static StreamController *sharedInstance;
     });
 }
 
-- (void) otrKit:(OTRKit *)otrKit decodedMessage:(NSString *)message tlvs:(NSArray *)tlvs sender:(NSString *)sender accountName:(NSString *)accountName protocol:(NSString *)protocol {
+- (void) otrKit:(OTRKit *)otrKit decodedMessage:(NSString *)message tlvs:(NSArray *)tlvs username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
     dispatch_async(dispatch_get_main_queue(), ^{
-        DDLogVerbose(@"decodedMessage: %@ sender: %@ accountName: %@ protocol: %@", message, sender, accountName, protocol);
+        DDLogVerbose(@"decodedMessage: %@ sender: %@ accountName: %@ protocol: %@", message, username, accountName, protocol);
         for (OTRTLV *tlv in tlvs) {
             NSLog(@"tlv found: %@", tlv);
         }
@@ -305,7 +305,7 @@ static StreamController *sharedInstance;
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
-- (BOOL) otrKit:(OTRKit *)otrKit isRecipientLoggedIn:(NSString *)recipient accountName:(NSString *)accountName protocol:(NSString *)protocol {
+- (BOOL) otrKit:(OTRKit *)otrKit isUsernameLoggedIn:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
     return YES;
 }
 
@@ -317,19 +317,24 @@ static StreamController *sharedInstance;
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
-- (void) otrKit:(OTRKit *)otrKit showFingerprintConfirmationForAccountName:(NSString *)accountName protocol:(NSString *)protocol userName:(NSString *)userName theirHash:(NSString *)theirHash ourHash:(NSString *)ourHash {
+- (void) otrKit:(OTRKit *)otrKit showFingerprintConfirmationForTheirHash:(NSString *)theirHash ourHash:(NSString *)ourHash username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
-- (void) otrKit:(OTRKit *)otrKit handleSMPEvent:(OTRKitSMPEvent)event progress:(double)progress question:(NSString *)question {
+- (void) otrKit:(OTRKit *)otrKit handleSMPEvent:(OTRKitSMPEvent)event progress:(double)progress question:(NSString *)question username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
+    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
+    
+    if (event == OTRKitSMPEventAskForAnswer) {
+        NSLog(@"Question: %@", question);
+        [[OTRKit sharedInstance] respondToSMPForUsername:username accountName:accountName protocol:protocol secret:@"secret!"];
+    }
+}
+
+- (void) otrKit:(OTRKit *)otrKit handleMessageEvent:(OTRKitMessageEvent)event message:(NSString *)message username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol error:(NSError *)error {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
-- (void) otrKit:(OTRKit *)otrKit handleMessageEvent:(OTRKitMessageEvent)event message:(NSString *)message error:(NSError *)error {
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-}
-
-- (void) otrKit:(OTRKit *)otrKit receivedSymmetricKey:(NSData *)symmetricKey forUse:(NSUInteger)use useData:(NSData *)useData {
+- (void) otrKit:(OTRKit *)otrKit receivedSymmetricKey:(NSData *)symmetricKey forUse:(NSUInteger)use useData:(NSData *)useData username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 }
 
