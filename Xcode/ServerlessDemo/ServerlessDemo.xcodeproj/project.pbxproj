@@ -23,6 +23,8 @@
 		D978F43218AB6DAC0099D05F /* XMPPMessage+XEP_0066.m in Sources */ = {isa = PBXBuildFile; fileRef = D978F43018AB6DAC0099D05F /* XMPPMessage+XEP_0066.m */; };
 		D9979FD2191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */; };
 		D9979FD5191AF33300018F3E /* XMPPIDTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = D9979FD4191AF33300018F3E /* XMPPIDTracker.m */; };
+		D9CA202419253D51006197EA /* OTRDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CA202319253D51006197EA /* OTRDataHandler.m */; };
+		D9CA204419257531006197EA /* HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CA204319257531006197EA /* HTTPMessage.m */; };
 		D9D4F185191C620200F23FA4 /* libgcrypt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F182191C620200F23FA4 /* libgcrypt.a */; };
 		D9D4F186191C620200F23FA4 /* libgpg-error.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F183191C620200F23FA4 /* libgpg-error.a */; };
 		D9D4F187191C620200F23FA4 /* libotr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D4F184191C620200F23FA4 /* libotr.a */; };
@@ -101,6 +103,10 @@
 		D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPSCRAMSHA1Authentication.m; sourceTree = "<group>"; };
 		D9979FD3191AF33300018F3E /* XMPPIDTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPIDTracker.h; path = ../../Utilities/XMPPIDTracker.h; sourceTree = "<group>"; };
 		D9979FD4191AF33300018F3E /* XMPPIDTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPIDTracker.m; path = ../../Utilities/XMPPIDTracker.m; sourceTree = "<group>"; };
+		D9CA202219253D51006197EA /* OTRDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTRDataHandler.h; path = Submodules/OTRKit/OTRKit/OTRDataHandler.h; sourceTree = "<group>"; };
+		D9CA202319253D51006197EA /* OTRDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTRDataHandler.m; path = Submodules/OTRKit/OTRKit/OTRDataHandler.m; sourceTree = "<group>"; };
+		D9CA204219257531006197EA /* HTTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPMessage.h; path = Submodules/CocoaHTTPServer/Core/HTTPMessage.h; sourceTree = "<group>"; };
+		D9CA204319257531006197EA /* HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTTPMessage.m; path = Submodules/CocoaHTTPServer/Core/HTTPMessage.m; sourceTree = "<group>"; };
 		D9D4F14D191C61B500F23FA4 /* auth.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = auth.c; sourceTree = "<group>"; };
 		D9D4F14E191C61B500F23FA4 /* auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = auth.h; sourceTree = "<group>"; };
 		D9D4F14F191C61B500F23FA4 /* b64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = b64.c; sourceTree = "<group>"; };
@@ -293,6 +299,9 @@
 			isa = PBXGroup;
 			children = (
 				962032011735837200C43080 /* Default-568h@2x.png */,
+				D9CA204219257531006197EA /* HTTPMessage.h */,
+				D9CA204319257531006197EA /* HTTPMessage.m */,
+				D9CA2025192551FE006197EA /* AFNetworking */,
 				D9D4F14B191C618D00F23FA4 /* OTRKit */,
 				DCE60CA710F7A6ED00E20271 /* Core Data */,
 				DCE60D7210F8EEC300E20271 /* Categories */,
@@ -371,6 +380,14 @@
 				D9979FD1191AF2D300018F3E /* XMPPSCRAMSHA1Authentication.m */,
 			);
 			path = "SCRAM-SHA-1";
+			sourceTree = "<group>";
+		};
+		D9CA2025192551FE006197EA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AFNetworking;
+			path = Submodules/AFNetworking/AFNetworking;
 			sourceTree = "<group>";
 		};
 		D9D4F14B191C618D00F23FA4 /* OTRKit */ = {
@@ -470,6 +487,8 @@
 		D9D4F188191C62A000F23FA4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D9CA202219253D51006197EA /* OTRDataHandler.h */,
+				D9CA202319253D51006197EA /* OTRDataHandler.m */,
 				D9D4F189191C62D700F23FA4 /* OTRKit.h */,
 				D9D4F18A191C62D700F23FA4 /* OTRKit.m */,
 				D9D4F18B191C62D700F23FA4 /* OTRTLV.h */,
@@ -814,10 +833,12 @@
 				DCE60CCC10F7B49200E20271 /* Service.m in Sources */,
 				DCE60CEB10F7C3E000E20271 /* BonjourClient.m in Sources */,
 				DCE60D8D10F8EF6E00E20271 /* DDString.m in Sources */,
+				D9CA202419253D51006197EA /* OTRDataHandler.m in Sources */,
 				D9D4F18E191C62D700F23FA4 /* OTRTLV.m in Sources */,
 				DCE60DFD10F93C5400E20271 /* P2PMessage.m in Sources */,
 				D978F43118AB6DAC0099D05F /* XMPPIQ+XEP_0066.m in Sources */,
 				DCE60EA810FA88EB00E20271 /* ChatViewController.m in Sources */,
+				D9CA204419257531006197EA /* HTTPMessage.m in Sources */,
 				DCBD58CC10FCBE0700ACF4AC /* StreamController.m in Sources */,
 				DC84BC7C12440D6B0055A459 /* DDXMLDocument.m in Sources */,
 				DC84BC7D12440D6B0055A459 /* DDXMLElement.m in Sources */,

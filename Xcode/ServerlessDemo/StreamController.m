@@ -220,7 +220,7 @@ static StreamController *sharedInstance;
         
 		if ([msgBody length] > 0)
 		{
-            [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+            [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp" tag:msgBody];
 		}
 	}
 }
@@ -248,9 +248,9 @@ static StreamController *sharedInstance;
 
 #pragma mark OTRKitDelegete methods
 
-- (void) otrKit:(OTRKit *)otrKit injectMessage:(NSString *)message username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
+- (void) otrKit:(OTRKit *)otrKit injectMessage:(NSString *)message username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol tag:(id)tag {
     dispatch_async(dispatch_get_main_queue(), ^{
-        DDLogVerbose(@"injectMessage: %@ recipient: %@ accountName: %@ protocol %@", message, username, accountName, protocol);
+        DDLogVerbose(@"injectMessage: %@ recipient: %@ accountName: %@ protocol %@ tag: %@", message, username, accountName, protocol, tag);
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"serviceName == %@", accountName];
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Service"];
@@ -272,11 +272,15 @@ static StreamController *sharedInstance;
     });
 }
 
-- (void) otrKit:(OTRKit *)otrKit decodedMessage:(NSString *)message tlvs:(NSArray *)tlvs username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol {
+- (void) otrKit:(OTRKit *)otrKit decodedMessage:(NSString *)message tlvs:(NSArray *)tlvs username:(NSString *)username accountName:(NSString *)accountName protocol:(NSString *)protocol tag:(id)tag {
     dispatch_async(dispatch_get_main_queue(), ^{
-        DDLogVerbose(@"decodedMessage: %@ sender: %@ accountName: %@ protocol: %@", message, username, accountName, protocol);
+        DDLogVerbose(@"decodedMessage: %@ sender: %@ accountName: %@ protocol: %@ tag: %@", message, username, accountName, protocol, tag);
         for (OTRTLV *tlv in tlvs) {
-            NSLog(@"tlv found: %@", tlv);
+            NSString *stringValue = [NSString stringWithUTF8String:tlv.data.bytes];
+            NSLog(@"tlv(%d, %d): %@", tlv.type, (int)tlv.data.length, stringValue);
+        }
+        if (!message.length) {
+            return;
         }
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"serviceName == %@", accountName];

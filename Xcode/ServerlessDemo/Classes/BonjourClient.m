@@ -66,6 +66,8 @@ static BonjourClient *sharedInstance;
 - (void)startBrowsing
 {
 	[serviceBrowser searchForServicesOfType:SERVICE_TYPE inDomain:@""];
+    //[serviceBrowser searchForBrowsableDomains];
+    //[serviceBrowser searchForRegistrationDomains];
 }
 
 - (void)stopBrowsing
@@ -175,22 +177,22 @@ static BonjourClient *sharedInstance;
 	NSError *error = nil;
 	NSArray *results = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
 	
-	if (results == nil)
+	if (results.count > 0)
 	{
-		DDLogError(@"%@: Error searching for service \"%@\": %@, %@",
-				   THIS_FILE, serviceDescription, error, [error userInfo]);
-		
-		return nil;
-	}
-	else if ([results count] == 0)
-	{
-		DDLogWarn(@"%@: Unable to find service \"%@\"", THIS_FILE, serviceDescription);
-		
-		return nil;
-	}
+        return [results firstObject];
+    }
 	else
 	{
-		return [results objectAtIndex:0];
+        Service *service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
+                                                         inManagedObjectContext:[self managedObjectContext]];
+		
+		service.serviceType   = [ns type];
+		service.serviceName   = [ns name];
+		service.serviceDomain = [ns domain];
+		service.serviceDescription = [self descriptionForNetService:ns];
+        [[self managedObjectContext] save:nil];
+		
+		return service;
 	}
 }
 
@@ -206,20 +208,9 @@ static BonjourClient *sharedInstance;
 	
 	if (![ns isEqual:localService])
 	{
-		Service *service = [NSEntityDescription insertNewObjectForEntityForName:@"Service"
-															   inManagedObjectContext:[self managedObjectContext]];
-		
-		service.serviceType   = [ns type];
-		service.serviceName   = [ns name];
-		service.serviceDomain = [ns domain];
-		service.serviceDescription = [self descriptionForNetService:ns];
+		Service *service = [self serviceForNetService:ns];
 		
 		[service updateDisplayName];
-		
-	//	if (!moreComing)
-	//	{
-			[[self managedObjectContext] save:nil];
-	//	}
 		
 		// Start monitoring the service so we receive TXT Record updates.
 		// Note: We must retain the service or it will get deallocated, and we won't receive updates.
@@ -230,6 +221,22 @@ static BonjourClient *sharedInstance;
 		[ns startMonitoring];
 		[ns resolveWithTimeout:10.0];
 	}
+}
+
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didFindDomain:(NSString *)domainString moreComing:(BOOL)moreComing {
+    NSLog(@"did find domain: %@", domainString);
+}
+
+- (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didNotSearch:(NSDictionary *)errorDict {
+    NSLog(@"didnt search: %@", errorDict);
+}
+
+- (void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
+    DDLogVerbose(@"%@ - %@", THIS_FILE, THIS_METHOD);
+}
+
+- (void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
+    DDLogVerbose(@"%@ - %@", THIS_FILE, THIS_METHOD);
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)sb didRemoveService:(NSNetService *)ns moreComing:(BOOL)moreComing

@@ -219,12 +219,21 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void) cryptoButtonPressed:(id)sender {
-    [[OTRKit sharedInstance] initiateSMPForUsername:service.displayName accountName:service.serviceName protocol:@"xmpp" question:@"What's the answer?" secret:@"secret!"];
+    //[[OTRKit sharedInstance] initiateSMPForUsername:service.displayName accountName:service.serviceName protocol:@"xmpp" question:@"What's the answer?" secret:@"secret!"];
+    NSString *testString = @"testTLV test test test";
+    NSData *testData = [testString dataUsingEncoding:NSUTF8StringEncoding];
+    OTRTLV *testTLV = [[OTRTLV alloc] initWithType:OTRTLVTypeDataRequest data:testData];
+    NSString *testTag = @"testTag";
+    [[OTRKit sharedInstance] encodeMessage:nil tlvs:@[testTLV] username:service.displayName accountName:service.serviceName protocol:@"xmpp" tag:testTag];
 }
 
 - (void)sendMessage:(NSString *)msgContent
 {
-    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:nil username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+    NSString *testString = @"testTLV";
+    NSData *testData = [testString dataUsingEncoding:NSUTF8StringEncoding];
+    OTRTLV *testTLV = [[OTRTLV alloc] initWithType:OTRTLVTypeDataRequest data:testData];
+    NSString *testTag = @"testTag2";
+    [[OTRKit sharedInstance] encodeMessage:msgContent tlvs:@[testTLV] username:service.displayName accountName:service.serviceName protocol:@"xmpp" tag:testTag];
     
 	P2PMessage *msg = [NSEntityDescription insertNewObjectForEntityForName:@"P2PMessage"
 												 inManagedObjectContext:[self managedObjectContext]];
@@ -693,7 +702,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
 	if ([msgBody length] > 0)
 	{
-        [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp"];
+        [[OTRKit sharedInstance] decodeMessage:msgBody username:service.displayName accountName:service.serviceName protocol:@"xmpp" tag:msgBody];
 	}
 }
 

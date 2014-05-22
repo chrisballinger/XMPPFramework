@@ -5,3 +5,9 @@
 [submodule "Xcode/ServerlessDemo/Submodules/OTRKit"]
 	path = Xcode/ServerlessDemo/Submodules/OTRKit
 	url = git@github.com:ChatSecure/OTRKit.git
+[submodule "Xcode/ServerlessDemo/Submodules/AFNetworking"]
+	path = Xcode/ServerlessDemo/Submodules/AFNetworking
+	url = git@github.com:AFNetworking/AFNetworking.git
+[submodule "Xcode/ServerlessDemo/Submodules/CocoaHTTPServer"]
+	path = Xcode/ServerlessDemo/Submodules/CocoaHTTPServer
+	url = git@github.com:robbiehanson/CocoaHTTPServer.git
