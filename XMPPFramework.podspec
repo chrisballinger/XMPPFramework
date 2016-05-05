@@ -82,6 +82,14 @@ ss.dependency 'XMPPFramework/Core'
 ss.prefix_header_contents = "#define HAVE_XMPP_SUBSPEC_#{name.upcase.sub('-', '_')}"
 end
 
+s.subspec 'OMEMO' do |ss|
+ss.source_files = 'Extensions/OMEMO/**/*.{h,m}'
+ss.dependency 'XMPPFramework/Core'
+ss.dependency 'XMPPFramework/XEP-0060'
+ss.dependency 'XMPPFramework/XEP-0334'
+ss.prefix_header_contents = "#define HAVE_XMPP_SUBSPEC_#{name.upcase.sub('-', '_')}"
+end
+
 s.subspec 'ProcessOne' do |ss|
 ss.source_files = 'Extensions/ProcessOne/**/*.{h,m}'
 ss.dependency 'XMPPFramework/Core'
@@ -341,6 +349,7 @@ s.subspec 'All' do |ss|
   ss.dependency 'XMPPFramework/CoreDataStorage'
   ss.dependency 'XMPPFramework/FileTransfer'
   ss.dependency 'XMPPFramework/GoogleSharedStatus'
+  ss.dependency 'XMPPFramework/OMEMO'
   ss.dependency 'XMPPFramework/ProcessOne'
   ss.dependency 'XMPPFramework/Reconnect'
   ss.dependency 'XMPPFramework/Roster'
